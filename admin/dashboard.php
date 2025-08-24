@@ -1,3 +1,11 @@
+<?php
+// login.php file
+session_start();
+require_once 'db_connect.php';
+
+include 'header.php';
+?>
+
 <div id="admin-dashboard" class="page-section">
     <section class="section">
         <div class="container">

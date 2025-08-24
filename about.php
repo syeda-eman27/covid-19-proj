@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 <div id="about" class="page-section">
     <section class="section">
         <div class="container">

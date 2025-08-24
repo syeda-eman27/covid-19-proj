@@ -1,8 +1,12 @@
+<?php
+include '../db_connect.php';
+include '../header.php';
+?>
 <div id="patient-dashboard" class="page-section">
-    <section class="section">
+    <section class="section-p">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 mb-4">
+                <div class="col-lg-12 mb-5">
                     <h2 class="section-title text-start">My Dashboard</h2>
                     <p class="section-subtitle text-start">Welcome back, John Doe</p>
                 </div>

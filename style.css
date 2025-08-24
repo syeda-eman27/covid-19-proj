@@ -1,3 +1,99 @@
+/* 
+// .page-section {
+//     display: block;
+//     // padding: 6rem 0;
+// }
+// .hero-section {
+//     background: linear-gradient(to right, #2563eb, #0ea5e9);
+//     color: #fff;
+//     padding: 8rem 0;
+// }
+// .section-title {
+//     font-weight: 700;
+//     color: #1e293b;
+//     margin-bottom: 0.5rem;
+// }
+// .section-subtitle {
+//     color: #64748b;
+// }
+// .stats-section {
+//     padding: 3rem 0;
+//     background-color: #f1f5f9;
+// }
+// .stat-card {
+//     background: #fff;
+//     border-radius: 12px;
+//     padding: 2rem;
+//     text-align: center;
+//     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+// }
+// .service-card {
+//     background: #fff;
+//     border-radius: 12px;
+//     padding: 2rem;
+//     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+//     transition: transform 0.3s ease;
+// }
+// .service-card:hover {
+//     transform: translateY(-5px);
+// }
+// .service-icon {
+//     background: #eef2ff;
+//     color: #2563eb;
+//     width: 60px;
+//     height: 60px;
+//     border-radius: 50%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin: 0 auto 1.5rem;
+//     font-size: 2rem;
+// }
+// .service-card .btn {
+//     border-radius: 50px;
+// }
+// .guidelines-card {
+//     background: #fff;
+//     border-left: 5px solid #059669;
+//     padding: 1.5rem;
+//     border-radius: 8px;
+//     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+// }
+// .footer {
+//     padding: 1.5rem 0;
+//     background-color: #333;
+//     color: #fff;
+//     font-size: 0.9rem;
+// }
+// .status-badge {
+//     padding: 0.3rem 0.8rem;
+//     border-radius: 50px;
+//     font-size: 0.8rem;
+//     font-weight: 600;
+//     white-space: nowrap;
+// }
+// .badge-success {
+//     background: #d1fae5;
+//     color: #065f46;
+// }
+// .badge-warning {
+//     background: #fef3c7;
+//     color: #92400e;
+// }
+// .hospital-card {
+//     background: #fff;
+//     border-radius: 12px;
+//     padding: 2rem;
+//     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+// }
+// .service-tag {
+//     background: #e0f2fe;
+//     color: #0284c7;
+//     padding: 0.2rem 0.6rem;
+//     border-radius: 50px;
+//     font-size: 0.8rem;
+//     font-weight: 500;
+// } */
 :root {
     --primary-color: #2563eb;
     --secondary-color: #059669;
@@ -27,7 +123,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-html,body{height:100%};
+html,body{
+    height:100%};
 
 body {
     font-family: 'Inter', sans-serif;
@@ -151,8 +248,6 @@ body {
     display: block;
     animation: fadeIn 0.6s ease;
 }
-
-
 
 .rwap{
   max-width:1100px;
