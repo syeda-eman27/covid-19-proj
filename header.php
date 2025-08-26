@@ -65,16 +65,16 @@ include "db_connect.php";
                                 <li><a class="dropdown-item" href="admin/dashboard.php">
                                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                                 </a></li>
-                                <li><a class="dropdown-item" href="admin/hospitals.php">
+                                <li><a class="dropdown-item" href="admin/admin-hospitals.php">
                                     <i class="fas fa-hospital-alt me-2"></i>Manage Hospitals
                                 </a></li>
-                                <li><a class="dropdown-item" href="admin/users.php">
+                                <li><a class="dropdown-item" href="admin/admin-users.php">
                                     <i class="fas fa-users me-2"></i>Manage Users
                                 </a></li>
-                                <li><a class="dropdown-item" href="admin/bookings.php">
+                                <li><a class="dropdown-item" href="admin/admin-bookings.php">
                                     <i class="fas fa-calendar-check me-2"></i>View Bookings
                                 </a></li>
-                                <li><a class="dropdown-item" href="admin/reports.php">
+                                <li><a class="dropdown-item" href="admin/admin-reports.php">
                                     <i class="fas fa-chart-bar me-2"></i>Generate Reports
                                 </a></li>
                             </ul>
@@ -91,16 +91,16 @@ include "db_connect.php";
                                 <li><a class="dropdown-item" href="hospital/dashboard.php">
                                     <i class="fas fa-chart-line me-2"></i>Dashboard
                                 </a></li>
-                                <li><a class="dropdown-item" href="hospital/profile.php">
+                                <li><a class="dropdown-item" href="hospital/hospital-profile.php">
                                     <i class="fas fa-building me-2"></i>Manage Profile
                                 </a></li>
-                                <li><a class="dropdown-item" href="hospital/slots.php">
+                                <li><a class="dropdown-item" href="hospital/hospital-slots.php">
                                     <i class="fas fa-clock me-2"></i>Manage Slots
                                 </a></li>
-                                <li><a class="dropdown-item" href="hospital/bookings.php">
+                                <li><a class="dropdown-item" href="hospital/hospital-bookings.php">
                                     <i class="fas fa-list-alt me-2"></i>View Bookings
                                 </a></li>
-                                <li><a class="dropdown-item" href="hospital/inventory.php">
+                                <li><a class="dropdown-item" href="hospital/hospital-inventory.php">
                                     <i class="fas fa-boxes me-2"></i>Vaccine Inventory
                                 </a></li>
                             </ul>
@@ -117,16 +117,16 @@ include "db_connect.php";
                                 <li><a class="dropdown-item" href="patient/dashboard.php">
                                     <i class="fas fa-user-circle me-2"></i>My Dashboard
                                 </a></li>
-                                <li><a class="dropdown-item" href="patient/booking.php">
+                                <li><a class="dropdown-item" href="patient/patient-booking.php">
                                     <i class="fas fa-calendar-plus me-2"></i>Book Appointment
                                 </a></li>
-                                <li><a class="dropdown-item" href="patient/history.php">
+                                <li><a class="dropdown-item" href="patient/patient-history.php">
                                     <i class="fas fa-history me-2"></i>Booking History
                                 </a></li>
-                                <li><a class="dropdown-item" href="patient/reports.php">
+                                <li><a class="dropdown-item" href="patient/patient-reports.php">
                                     <i class="fas fa-file-medical me-2"></i>Test Reports
                                 </a></li>
-                                <li><a class="dropdown-item" href="patient/certificate.php">
+                                <li><a class="dropdown-item" href="patient/patient-certificate.php">
                                     <i class="fas fa-certificate me-2"></i>Vaccination Certificate
                                 </a></li>
                             </ul>

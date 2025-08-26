@@ -1,3 +1,11 @@
+<?php
+// session_start();
+// require_once 'db_connect.php';
+// include  '/db_connect.php';
+include 'db_connect.php';
+
+include 'header.php';
+?>
 <div id="services" class="page-section">
     <section class="section">
         <div class="container">
@@ -56,3 +64,6 @@
         </div>
     </section>
 </div>
+<?php 
+include 'footer.php';
+?>

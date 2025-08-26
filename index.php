@@ -1,6 +1,6 @@
-
 <?php
 // Main index.php file
+include 'db_connect.php';
 include 'header.php';
 
 // Pricing data array
@@ -78,7 +78,8 @@ $pricingPlans = [
                 </div>
                 <div class="col-lg-6">
                     <div class="text-center">
-                        <i class="fas fa-shield-virus" style="font-size: 15rem; opacity: 0.3;"></i>
+                        <img src="img/cover.jpg" alt="">
+                        <!-- <i class="fas fa-shield-virus" style="font-size: 15rem; opacity: 0.3;"></i> -->
                     </div>
                 </div>
             </div>
@@ -603,5 +604,4 @@ $pricingPlans = [
 
 
 </div>
-
 <?php include 'footer.php'; ?>

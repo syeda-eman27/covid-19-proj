@@ -1,10 +1,19 @@
+<?php
+// session_start();
+// require_once 'db_connect.php';
+include  '../db_connect.php';
+// include '../header.php';
+?>
 <div id="patient-certificate" class="page-section">
     <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mb-4">
-                    <h2 class="section-title text-start">Vaccination Certificate</h2>
-                    <p class="section-subtitle text-start">Download your official vaccination certificate</p>
+                    <h2 class="section-title text-center">Vaccination Certificate</h2>
+                    <p class="section-subtitle text-center">Download your official vaccination certificate</p>
+                    <button class="btn btn-outline-danger">
+                                    <a href="/patient/dashboard.php" class="text-danger" >Back Dashboard</a>
+                                </button>
                 </div>
             </div>
 

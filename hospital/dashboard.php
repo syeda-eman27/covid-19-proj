@@ -1,5 +1,4 @@
 <?php
-// login.php file
 // session_start();
 // require_once 'db_connect.php';
 include  '/db_connect.php';

@@ -7,7 +7,9 @@
 <!-- Chart.js for data visualization -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Custom CSS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
+
+<script src="/script.js"></script>
 
 <?php
 // db_connect.php file

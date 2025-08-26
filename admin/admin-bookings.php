@@ -1,37 +1,16 @@
+<?php
+session_start();
+require_once '../db_connect.php';
+
+// Fetch all bookings from the database
+$sql = "SELECT * FROM bookings ORDER BY appointment_date DESC";
+$result = $conn->query($sql);
+
+include '../header.php';
+?>
 <div id="admin-bookings" class="page-section">
     <section class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mb-4">
-                    <h2 class="section-title text-start">View Bookings</h2>
-                    <p class="section-subtitle text-start">Manage all system bookings</p>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-2">
-                            <input type="date" class="form-control" style="width: 200px;">
-                            <select class="form-select" style="width: 150px;">
-                                <option>All Services</option>
-                                <option>Testing</option>
-                                <option>Vaccination</option>
-                            </select>
-                            <select class="form-select" style="width: 150px;">
-                                <option>All Status</option>
-                                <option>Pending</option>
-                                <option>Confirmed</option>
-                                <option>Completed</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-download me-2"></i>Export
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="service-card">
@@ -39,38 +18,49 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Booking ID</th>
-                                        <th>Patient</th>
+                                        <th>ID</th>
+                                        <th>User Name</th>
                                         <th>Service</th>
                                         <th>Hospital</th>
-                                        <th>Date/Time</th>
+                                        <th>Booking Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $status_class = '';
+                                            switch ($row['status']) {
+                                                case 'Confirmed':
+                                                    $status_class = 'badge-confirmed';
+                                                    break;
+                                                case 'Completed':
+                                                    $status_class = 'badge-completed';
+                                                    break;
+                                                case 'Pending':
+                                                    $status_class = 'badge-pending';
+                                                    break;
+                                            }
+                                    ?>
                                     <tr>
-                                        <td>BKG001</td>
-                                        <td>John Doe</td>
-                                        <td>Vaccination</td>
-                                        <td>City General Hospital</td>
-                                        <td>Dec 15, 2024 10:00 AM</td>
-                                        <td><span class="status-badge badge-confirmed">Confirmed</span></td>
+                                        <td><?php echo $row['booking_id']; ?></td>
+                                        <td><?php echo htmlspecialchars($row['user_name']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['service_type']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['hospital_name']); ?></td>
+                                        <td><?php echo date('M d, Y h:i A', strtotime($row['booking_date'])); ?></td>
+                                        <td><span class="status-badge <?php echo $status_class; ?>"><?php echo htmlspecialchars($row['status']); ?></span></td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary">View</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>BKG002</td>
-                                        <td>Sarah Smith</td>
-                                        <td>RT-PCR Test</td>
-                                        <td>Metro Health Center</td>
-                                        <td>Dec 14, 2024 02:30 PM</td>
-                                        <td><span class="status-badge badge-completed">Completed</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary">View</button>
-                                        </td>
-                                    </tr>
+                                    <?php 
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='7' class='text-center'>No bookings found.</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -80,3 +70,4 @@
         </div>
     </section>
 </div>
+<?php include '../footer.php'; ?>

@@ -1,4 +1,11 @@
-<link rel="stylesheet" href="/css/bootstrap.min.css">
+<!-- <?php
+// session_start();
+// require_once 'db_connect.php';
+include  'db_connect.php';
+
+include 'header.php';
+?> -->
+
 <div id="about" class="page-section">
     <section class="section">
         <div class="container">
@@ -33,3 +40,7 @@
         </div>
     </section>
 </div>
+
+<?php 
+include 'footer.php';
+?>

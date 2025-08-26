@@ -1,6 +1,6 @@
 <?php
 include '../db_connect.php';
-include '../header.php';
+// include '../header.php';
 ?>
 <div id="patient-dashboard" class="page-section">
     <section class="section-p">
@@ -20,7 +20,7 @@ include '../header.php';
                         </div>
                         <h5 class="mb-3">Book Appointment</h5>
                         <p class="text-muted mb-3">Schedule your next COVID-19 test or vaccination</p>
-                        <a href="index.php?section=patient-booking" class="btn btn-primary">
+                        <a href="./patient-booking.php" class="btn btn-primary">
                             <i class="fas fa-arrow-right me-2"></i>Book Now
                         </a>
                     </div>
@@ -32,7 +32,7 @@ include '../header.php';
                         </div>
                         <h5 class="mb-3">View Reports</h5>
                         <p class="text-muted mb-3">Access your test results and vaccination records</p>
-                        <a href="index.php?section=patient-reports" class="btn btn-primary">
+                        <a href="./patient-reports.php" class="btn btn-primary">
                             <i class="fas fa-arrow-right me-2"></i>View Reports
                         </a>
                     </div>
@@ -44,7 +44,7 @@ include '../header.php';
                         </div>
                         <h5 class="mb-3">Get Certificate</h5>
                         <p class="text-muted mb-3">Download your vaccination certificate</p>
-                        <a href="index.php?section=patient-certificate" class="btn btn-primary">
+                        <a href="./patient-certificate.php" class="btn btn-primary">
                             <i class="fas fa-arrow-right me-2"></i>Download
                         </a>
                     </div>

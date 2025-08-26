@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once '../db_connect.php';
+
+// Fetch data for dropdowns
+$hospitals_query = "SELECT hospital_name FROM hospital ORDER BY hospital_name ASC";
+$hospitals_result = $conn->query($hospitals_query);
+
+include '../header.php';
+?>
 <div id="admin-reports" class="page-section">
     <section class="section">
         <div class="container">
@@ -26,10 +36,10 @@
                                 <label class="form-label">Date Range</label>
                                 <div class="row g-2">
                                     <div class="col-6">
-                                        <input type="date" class="form-control" placeholder="Start Date">
+                                        <input type="date" class="form-control" >
                                     </div>
                                     <div class="col-6">
-                                        <input type="date" class="form-control" placeholder="End Date">
+                                        <input type="date" class="form-control" >
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +47,13 @@
                                 <label class="form-label">Hospital</label>
                                 <select class="form-select">
                                     <option>All Hospitals</option>
-                                    <option>City General Hospital</option>
-                                    <option>Metro Health Center</option>
+                                    <?php
+                                    if ($hospitals_result && $hospitals_result->num_rows > 0) {
+                                        while ($row = $hospitals_result->fetch_assoc()) {
+                                            echo "<option>" . htmlspecialchars($row['hospital_name']) . "</option>";
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">
@@ -60,3 +75,4 @@
         </div>
     </section>
 </div>
+<?php include '../footer.php'; ?>

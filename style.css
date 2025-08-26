@@ -1,8 +1,4 @@
 /* 
-// .page-section {
-//     display: block;
-//     // padding: 6rem 0;
-// }
 // .hero-section {
 //     background: linear-gradient(to right, #2563eb, #0ea5e9);
 //     color: #fff;
@@ -241,7 +237,8 @@ body {
 }
 
 .page-section {
-    display: none;
+   display: block;
+padding: 6rem 0;
 }
 
 .page-section.active {
