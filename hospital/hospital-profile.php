@@ -1,9 +1,19 @@
 <?php
-// session_start();
-// require_once 'db_connect.php';
-include  '/db_connect.php';
+session_start();
+require_once '../db_connect.php';
 
-include '/header.php';
+// Assuming a hospital is logged in with hospital_id = 1 for demonstration
+$hospital_id = 1;
+$hospital_data = [];
+
+$sql = "SELECT * FROM hospitals WHERE id = $hospital_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $hospital_data = $result->fetch_assoc();
+}
+
+include '../header.php';
 ?>
 <div id="hospital-profile" class="page-section">
     <section class="section">
@@ -22,34 +32,19 @@ include '/header.php';
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Hospital Name</label>
-                                    <input type="text" class="form-control" value="City General Hospital" required>
+                                    <input type="text" class="form-control" value="<?php echo htmlspecialchars($hospital_data['name'] ?? ''); ?>" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Contact Number</label>
-                                    <input type="tel" class="form-control" value="(555) 123-4567" required>
+                                    <input type="tel" class="form-control" value="<?php echo htmlspecialchars($hospital_data['phone'] ?? ''); ?>" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Address</label>
-                                    <input type="text" class="form-control" value="123 Main Street, New York, NY 10001" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Services Offered</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="testingCheck" checked>
-                                        <label class="form-check-label" for="testingCheck">COVID Testing</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="vaccinationCheck" checked>
-                                        <label class="form-check-label" for="vaccinationCheck">Vaccination</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Operating Hours</label>
-                                    <input type="text" class="form-control" value="8:00 AM - 6:00 PM, Monday to Saturday">
+                                    <input type="text" class="form-control" value="<?php echo htmlspecialchars($hospital_data['address'] ?? ''); ?>" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Description</label>
-                                    <textarea class="form-control" rows="3">A leading healthcare provider offering comprehensive COVID-19 services.</textarea>
+                                    <textarea class="form-control" rows="3"><?php echo htmlspecialchars($hospital_data['description'] ?? ''); ?></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">
@@ -60,19 +55,8 @@ include '/header.php';
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="service-card">
-                        <h5 class="mb-3">Hospital Logo</h5>
-                        <div class="text-center py-4 border rounded" style="background: #f8f9fa;">
-                            <i class="fas fa-hospital text-primary" style="font-size: 5rem;"></i>
-                            <p class="mt-3 text-muted">Upload your hospital logo</p>
-                            <button class="btn btn-sm btn-primary mt-2">
-                                <i class="fas fa-upload me-2"></i>Upload Image
-                            </button>
-                        </div>
-                    </div>
                 </div>
-            </div>
         </div>
     </section>
 </div>
+<?php include '../footer.php'; ?>

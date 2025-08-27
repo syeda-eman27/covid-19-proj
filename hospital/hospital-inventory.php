@@ -1,9 +1,15 @@
 <?php
-// session_start();
-// require_once 'db_connect.php';
-include  '/db_connect.php';
+session_start();
+require_once '../db_connect.php';
 
-include '/header.php';
+// Assuming a hospital is logged in with hospital_id = 1 for demonstration
+$hospital_id = 1;
+
+// Fetch inventory data for the hospital
+$sql = "SELECT * FROM inventory WHERE hospital_id = $hospital_id ORDER BY vaccine_name ASC";
+$result = $conn->query($sql);
+
+include '../header.php';
 ?>
 <div id="hospital-inventory" class="page-section">
     <section class="section">
@@ -29,102 +35,36 @@ include '/header.php';
                                 <thead>
                                     <tr>
                                         <th>Vaccine</th>
-                                        <th>Batch No.</th>
-                                        <th>Expiry Date</th>
                                         <th>Quantity</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                    ?>
                                     <tr>
-                                        <td>Pfizer-BioNTech</td>
-                                        <td>PF123456</td>
-                                        <td>Jun 2025</td>
-                                        <td>250</td>
+                                        <td><?php echo htmlspecialchars($row['vaccine_name']); ?></td>
+                                        <td><?php echo $row['qty']; ?></td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary me-1">Update</button>
                                             <button class="btn btn-sm btn-outline-danger">Remove</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Moderna</td>
-                                        <td>MD789012</td>
-                                        <td>Aug 2025</td>
-                                        <td>180</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary me-1">Update</button>
-                                            <button class="btn btn-sm btn-outline-danger">Remove</button>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='3' class='text-center'>No vaccines found in inventory.</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="service-card">
-                        <h5 class="mb-3">Inventory Summary</h5>
-                        <div class="chart-container" style="height: 200px;">
-                            <canvas id="inventoryChart"></canvas>
-                        </div>
-                        <div class="mt-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Pfizer-BioNTech</span>
-                                <strong>250 doses</strong>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Moderna</span>
-                                <strong>180 doses</strong>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <span>AstraZeneca</span>
-                                <strong>90 doses</strong>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
         </div>
     </section>
 </div>
-
-<!-- Add Vaccine Modal -->
-<div class="modal fade" id="addVaccineModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add New Vaccine</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Vaccine Name</label>
-                        <select class="form-select">
-                            <option>Pfizer-BioNTech</option>
-                            <option>Moderna</option>
-                            <option>AstraZeneca</option>
-                            <option>Johnson & Johnson</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Batch Number</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Expiry Date</label>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Quantity</label>
-                        <input type="number" class="form-control">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add Vaccine</button>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include '../footer.php'; ?>

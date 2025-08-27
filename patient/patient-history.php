@@ -1,7 +1,12 @@
 <?php
-// session_start();
-// require_once 'db_connect.php';
-include  '../db_connect.php';
+session_start();
+require_once '../db_connect.php';
+
+// Assuming a patient is logged in with user_id = 1 for demonstration
+$user_id = 1;
+
+$sql = "SELECT b.*, h.name AS hospital_name FROM bookings b JOIN hospitals h ON b.hospital_id = h.id WHERE b.user_id = $user_id ORDER BY b.appointment_date DESC";
+$result = $conn->query($sql);
 
 include '../header.php';
 ?>
@@ -31,8 +36,8 @@ include '../header.php';
                                 <option>Cancelled</option>
                             </select>
                         </div>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-download me-2"></i>Export
+                        <button class="btn btn-primary d-none d-lg-block">
+                            <i class="fas fa-file-export me-2"></i>Export History
                         </button>
                     </div>
                 </div>
@@ -53,24 +58,41 @@ include '../header.php';
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $status_class = '';
+                                            switch ($row['status']) {
+                                                case 'approved':
+                                                    $status_class = 'badge-confirmed';
+                                                    break;
+                                                case 'completed':
+                                                    $status_class = 'badge-completed';
+                                                    break;
+                                                case 'pending':
+                                                    $status_class = 'badge-pending';
+                                                    break;
+                                                case 'rejected':
+                                                    $status_class = 'badge-danger';
+                                                    break;
+                                            }
+                                            $service = ($row['type'] == 'test') ? 'RT-PCR Test' : 'Vaccination';
+                                    ?>
                                     <tr>
-                                        <td>Dec 15, 2024</td>
-                                        <td>Vaccination</td>
-                                        <td>City General Hospital</td>
-                                        <td><span class="status-badge badge-completed">Completed</span></td>
+                                        <td><?php echo date('M d, Y', strtotime($row['appointment_date'])); ?></td>
+                                        <td><?php echo htmlspecialchars($service); ?></td>
+                                        <td><?php echo htmlspecialchars($row['hospital_name']); ?></td>
+                                        <td><span class="status-badge <?php echo $status_class; ?>"><?php echo htmlspecialchars(ucfirst($row['status'])); ?></span></td>
                                         <td>
                                             <button class="btn btn-sm btn-outline-primary">View</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Nov 28, 2024</td>
-                                        <td>RT-PCR Test</td>
-                                        <td>Metro Health Center</td>
-                                        <td><span class="status-badge badge-completed">Completed</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary">View</button>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5' class='text-center'>No booking history found.</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -80,3 +102,4 @@ include '../header.php';
         </div>
     </section>
 </div>
+<?php include '../footer.php'; ?>

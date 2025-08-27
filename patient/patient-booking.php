@@ -1,7 +1,15 @@
 <?php
-// session_start();
-// require_once 'db_connect.php';
-include  '../db_connect.php';
+session_start();
+require_once '../db_connect.php';
+
+// Fetch all hospitals from the database
+$hospitals_sql = "SELECT id, name FROM hospitals WHERE approved = 1 ORDER BY name ASC";
+$hospitals_result = $conn->query($hospitals_sql);
+
+// Fetch all available slots (for demonstration)
+// You may need to add logic to filter by hospital and service type
+$slots_sql = "SELECT * FROM slots ORDER BY slot_date ASC";
+$slots_result = $conn->query($slots_sql);
 
 include '../header.php';
 ?>
@@ -24,36 +32,42 @@ include '../header.php';
                                     <label class="form-label">Service Type</label>
                                     <select class="form-select" id="serviceType" required>
                                         <option value="">Select Service</option>
-                                        <option value="rt-pcr">RT-PCR Test</option>
-                                        <option value="rapid-antigen">Rapid Antigen Test</option>
-                                        <option value="antibody">Antibody Test</option>
+                                        <option value="test">RT-PCR Test</option>
                                         <option value="vaccination">COVID-19 Vaccination</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Preferred Hospital</label>
+                                    <label class="form-label">Select Hospital</label>
                                     <select class="form-select" id="hospitalSelect" required>
-                                        <option value="">Select Hospital</option>
-                                        <option value="city-general">City General Hospital</option>
-                                        <option value="metro-health">Metro Health Center</option>
+                                        <option value="">Select a Hospital</option>
+                                        <option value="">Aga khan</option>
+                                        <option value="">NMC</option>
+                                        <?php
+                                        if ($hospitals_result->num_rows > 0) {
+                                            while ($row = $hospitals_result->fetch_assoc()) {
+                                                echo "<option value='{$row['id']}'>" . htmlspecialchars($row['name']) . "</option>";
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Preferred Date</label>
-                                    <input type="date" class="form-control" id="bookingDate" required>
+                                    <label class="form-label">Appointment Date</label>
+                                    <input type="date" class="form-control" id="appointmentDate" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Preferred Time</label>
-                                    <select class="form-select" id="bookingTime" required>
-                                        <option value="">Select Time</option>
-                                        <option value="09:00">09:00 AM</option>
-                                        <option value="10:00">10:00 AM</option>
-                                        <option value="11:00">11:00 AM</option>
+                                    <label class="form-label">Available Slots</label>
+                                    <select class="form-select" id="availableSlots" required>
+                                        <option value="">Select a Slot</option>
+                                        <?php
+                                        // This part needs to be dynamic based on the selected hospital and date
+                                        if ($slots_result->num_rows > 0) {
+                                            while ($row = $slots_result->fetch_assoc()) {
+                                                echo "<option value='{$row['id']}'>" . htmlspecialchars($row['slot_date']) . " - " . htmlspecialchars($row['capacity']) . " slots</option>";
+                                            }
+                                        }
+                                        ?>
                                     </select>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Additional Notes (Optional)</label>
-                                    <textarea class="form-control" rows="3" placeholder="Any special requirements or notes..."></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">
@@ -71,22 +85,9 @@ include '../header.php';
                             <p class="text-muted">Please fill the form to see booking summary</p>
                         </div>
                     </div>
-                    
-                    <div class="service-card mt-4">
-                        <h5 class="mb-3">Important Notes</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <i class="fas fa-info-circle text-info me-2"></i>
-                                Arrive 15 minutes before your appointment
-                            </li>
-                            <li class="mb-2">
-                                <i class="fas fa-id-card text-warning me-2"></i>
-                                Bring a valid government ID
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+<?php include '../footer.php'; ?>
