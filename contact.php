@@ -1,7 +1,7 @@
 <?php
 // session_start();
 // require_once 'db_connect.php';
-include  'db_connect.php';
+include 'db_connect.php';
 
 include 'header.php';
 ?>
@@ -17,7 +17,7 @@ include 'header.php';
                     </div>
                 </div>
                 <div class="row g-5">
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <div class="service-card">
                             <h4 class="mb-4">Send us a Message</h4>
                             <form id="contactForm">
@@ -30,24 +30,15 @@ include 'header.php';
                                         <label class="form-label">Email Address</label>
                                         <input type="email" class="form-control" required>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control">
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <label class="form-label">Subject</label>
-                                        <select class="form-select">
-                                            <option>General Inquiry</option>
-                                            <option>Booking Support</option>
-                                            <option>Technical Issue</option>
-                                            <option>Feedback</option>
-                                        </select>
+                                        <input type="text" class="form-control" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Message</label>
                                         <textarea class="form-control" rows="5" required></textarea>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 text-end">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fas fa-paper-plane me-2"></i>Send Message
                                         </button>
@@ -56,59 +47,45 @@ include 'header.php';
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="service-card">
-                            <h4 class="mb-4">Contact Information</h4>
-                            <div class="mb-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                        <i class="fas fa-phone"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Phone Support</h6>
-                                        <p class="text-muted mb-0">1-800-COVID-19</p>
-                                        <small class="text-muted">24/7 Available</small>
-                                    </div>
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="service-card contact-info-card">
+                            <div class="image-container">
+                                <img src="img/sinovac (1).jpg" class="img-fluid contact-img mb-4" alt="Contact Image">
                             </div>
-                            <div class="mb-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Email Support</h6>
-                                        <p class="text-muted mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="65161015150a171125060a130c01060417004b060a08">[email&#160;protected]</a></p>
-                                        <small class="text-muted">Response within 2 hours</small>
-                                    </div>
-                                </div>
+                            <h4 class="mb-4">General Inquiries</h4>
+                            <p class="text-muted mb-3">
+                                For general questions and support, please contact us at:
+                            </p>
+                            <div class="mb-3">
+                                <strong>Phone:</strong><br>
+                                <span class="text-muted">1-800-COVID-19</span>
                             </div>
-                            <div class="mb-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                        <i class="fas fa-comments"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Live Chat</h6>
-                                        <p class="text-muted mb-0">Available on website</p>
-                                        <small class="text-muted">Mon-Fri 9AM-6PM</small>
-                                    </div>
-                                </div>
+                            <div class="mb-3">
+                                <strong>Email:</strong><br>
+                                <span class="text-muted">
+                                    <a href="mailto:info@example.com">info@example.com</a>
+                                </span>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-5">
 
-                        <div class="service-card mt-4">
+                        <div class="service-card mt-4 contact-info-card">
                             <h4 class="mb-4">Hospital Support</h4>
                             <p class="text-muted mb-3">
                                 Healthcare providers interested in joining our network:
                             </p>
                             <div class="mb-3">
                                 <strong>Partnership Team:</strong><br>
-                                <span class="text-muted"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98e8f9eaecf6fdeaebf0f1e8ebd8fbf7eef1fcfbf9eafdb6fbf7f5">[email&#160;protected]</a></span>
+                                <span class="text-muted">
+                                    <a href="mailto:partners@example.com">partners@example.com</a>
+                                </span>
                             </div>
                             <div class="mb-3">
                                 <strong>Technical Support:</strong><br>
-                                <span class="text-muted"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99edfcfaf1d9faf6eff0fdfaf8ebfcb7faf6f4">[email&#160;protected]</a></span>
+                                <span class="text-muted">
+                                    <a href="mailto:tech@example.com">tech@example.com</a>
+                                </span>
                             </div>
                             <button class="btn btn-outline-primary">
                                 <i class="fas fa-handshake me-2"></i>Partner With Us

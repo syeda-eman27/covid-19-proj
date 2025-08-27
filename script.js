@@ -1,7 +1,7 @@
-function showSection(sectionId) {
-    // This is no longer needed as each section is a separate PHP file
-    // The navigation links now directly point to the .php files
-}
+// function showSection(sectionId) {
+//     // This is no longer needed as each section is a separate PHP file
+//     // The navigation links now directly point to the .php files
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     // A simple function to simulate dynamically loaded content

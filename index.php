@@ -1,3 +1,4 @@
+<script src="script.js"></script>
 <?php
 // Main index.php file
 include 'db_connect.php';
